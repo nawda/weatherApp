@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/style/main.css">
+    <!-- endinject -->
+</head>
+<body ng-controller="WeatherController as vm">
+    <div class="jumbotron">
+        <h1>OCA Weather App</h1>
+        <p>Be Ready!</p>
+    </div>
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary" ng-click="vm.set('San Diego')" ng-value="sandiego">San Diego</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.set('New York')">New York</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.set('Washington D.C')">Washington D.C</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.set('London')">London</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.set('Tokyo')">Tokyo</button>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control" ng-model="vm.oras">
+        <span class="input-group-btn">
+<button class="btn btn-default" type="button"  ng-click="vm.update(vm.oras)">Go!</button>
+</span>
+    </div>
+    <div class="col-md-6 leftcontainer">
+
+        <div class="header">
+            <p>Lat/Long: {{vm.weather.coord.lat}}, {{vm.weather.coord.ion}}
+                <hr></p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 smlbox">
+                <h5>Temperature (&#8457)</h5>
+                <p class="pcolor">{{vm.weather.main.temp}}&#8457</p>
+            </div>
+            <div class="col-md-4 smlbox">
+                <h5>Pressure</h5>
+                <p class="pcolor">{{vm.weather.main.pressure | number: 0}}hpa</p>
+            </div>
+            <div class="col-md-4 smlbox">
+                <h5>Humidity</h5>
+                <p class="pcolor">{{vm.weather.main.humidity}}%</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 smlbox">
+                <h5>Lowest Temp (&#8457)</h5>
+                <p class="pcolor">{{vm.weather.main.temp_min}}&#8457</p>
+            </div>
+            <div class="col-md-4 smlbox">
+                <h5>Highest Tempt (&#8457)</h5>
+                <p class="pcolor">{{vm.weather.main.temp_max}}&#8457</p>
+            </div>
+            <div class="col-md-4 smlbox">
+                <h5>Wind Speed</h5>
+                <p class="pcolor">{{vm.weather.wind.speed}}mph</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 rightcontainer">
+        <div class="alert alert-info" role="alert">
+            Search History
+        </div>
+        <table class="table table-striped">
+            <tr ng-repeat="item in vm.items">
+                <td>{{item.name}}</td>
+                <td>{{item.time | date :'dd/MM/yyyy'}}
+                    <br> {{item.time | date:'HH:mm:ss'}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/weather/weather.controller.js"></script>
+    <script src="app/weather/weather.factory.js"></script>
+</body>
+</html>

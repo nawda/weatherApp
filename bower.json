@@ -1,0 +1,30 @@
+{
+    "name": "9_weatherapp",
+    "description": "",
+    "main": "gulpfile.js",
+    "license": "ISC",
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "overrides": {
+        "font-awesome": {
+            "main": "css/font-awesome.css"
+        },
+        "bootstrap": {
+            "main": [
+                "dist/css/bootstrap.css",
+                "dist/js/bootstrap.js"
+            ]
+        }
+    },
+    "dependencies": {
+        "angular": "^1.6.3",
+        "angular-toastr": "^2.1.1",
+        "bootstrap": "^3.3.7"
+    }
+}
